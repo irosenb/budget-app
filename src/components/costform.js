@@ -2,7 +2,7 @@
 const CostForm = ({categories}) => {
   // Filter out empty category names, sort alphabetically
   const names = categories.map(category => {
-    return category.get('Name')
+    return category.get('Category')
   }).filter( Boolean ).sort()
 
   return (

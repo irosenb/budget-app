@@ -12,8 +12,8 @@ const Budget = () => {
   }, [])
 
   const fetchCategories = async () => {
-    const records = await base('Budget').select({
-      fields: ['Name', 'Cost'],
+    const records = await base('Categories').select({
+      fields: ['Category', 'Budget'],
     }).all()
   
     console.log(records);
@@ -33,7 +33,7 @@ const Budget = () => {
 function Totals({categories}) {
   // Retrieve costs from categories
   const costsArray = categories.map(category => {
-    return category.get('Cost')
+    return category.get('Budget')
   })
 
   const sum = calculateSum(costsArray)
@@ -46,7 +46,8 @@ function Totals({categories}) {
 
   return (
     <div className='pt-10'>
-      <h1>Total Costs: {formattedAmount}</h1>
+      <h1 className='text-2xl font-semibold'>Total Budget: {formattedAmount}</h1>
+      <h1 className='text-2xl font-semibold'>Spent: </h1>
     </div>
   )
 }
