@@ -1,5 +1,6 @@
 import Airtable from 'airtable';
 import { useEffect, useState } from 'react';
+import CostForm from './costform';
 
 const base = new Airtable({apiKey: process.env.REACT_APP_AIRTABLE_KEY}).base(process.env.REACT_APP_AIRTABLE_BASE)
 
@@ -21,14 +22,15 @@ const Budget = () => {
   } 
 
   return (
-    <div className='container'>
+    <div className='container text-center mx-auto pt-10'>
       <h1 className='text-3xl font-bold'>Budget App</h1>
-      <BudgetTotals categories={categories}/>
+      <Totals categories={categories}/>
+      <CostForm categories={categories}/>
     </div>
   )
 }
 
-function BudgetTotals({categories}) {
+function Totals({categories}) {
   // Retrieve costs from categories
   const costsArray = categories.map(category => {
     return category.get('Cost')
@@ -43,7 +45,9 @@ function BudgetTotals({categories}) {
   })
 
   return (
-    <h1>Total Costs: {formattedAmount}</h1>
+    <div className='pt-10'>
+      <h1>Total Costs: {formattedAmount}</h1>
+    </div>
   )
 }
 

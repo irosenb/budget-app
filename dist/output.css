@@ -623,6 +623,18 @@ video {
   margin-right: auto;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
