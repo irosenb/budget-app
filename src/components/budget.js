@@ -6,7 +6,7 @@ const base = new Airtable({apiKey: process.env.REACT_APP_AIRTABLE_KEY}).base(pro
 
 const Budget = () => {
   const [categories, setCategories] = useState([])
-
+  
   useEffect(() => {
     fetchCategories()
   }, [])
