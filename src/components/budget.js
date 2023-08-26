@@ -6,9 +6,11 @@ const base = new Airtable({apiKey: process.env.REACT_APP_AIRTABLE_KEY}).base(pro
 
 const Budget = () => {
   const [categories, setCategories] = useState([])
-  
+  const [spent, setSpent] = useState(0)
+
   useEffect(() => {
     fetchCategories()
+    fetchSpent()
   }, [])
 
   const fetchCategories = async () => {
@@ -21,16 +23,30 @@ const Budget = () => {
     setCategories(records)
   } 
 
+  const fetchSpent = async () => {
+    const expensesRecords = await base('Expenses').select({
+      fields: ['Cost', 'Category']
+    }).all()
+
+    const expenses = expensesRecords.map(expense => expense.get('Cost'))
+
+    const sum = expenses.reduce((partialSum, a) => partialSum + a, 0)
+
+    console.log(sum)
+
+    setSpent(sum)
+  }
+
   return (
     <div className='container md:text-center w-3/4 mx-auto pt-10'>
       <h1 className='text-4xl md:text-7xl font-bold'>Budget App</h1>
-      <Totals categories={categories}/>
+      <Totals categories={categories} spent={spent}/>
       <CostForm categories={categories}/>
     </div>
   )
 }
 
-function Totals({categories}) {
+function Totals({categories, spent}) {
   // Retrieve costs from categories
   const costsArray = categories.map(category => {
     return category.get('Budget')
@@ -44,10 +60,15 @@ function Totals({categories}) {
     currency: 'USD'
   })
 
+  const formattedSpent = spent.toLocaleString('en-US', {
+    style: 'currency', 
+    currency: 'USD'
+  })
+
   return (
     <div className='pt-10'>
       <h2 className='text-2xl font-semibold'>Total Budget: {formattedAmount}</h2>
-      <h2 className='text-2xl font-semibold'>Spent: </h2>
+      <h2 className='text-2xl font-semibold'>Spent: {formattedSpent}</h2>
     </div>
   )
 }
