@@ -1,6 +1,5 @@
 
 const CostForm = ({categories}) => {
-
   function submitCost(e) {
     e.preventDefault()
     console.log("Submitted!");
@@ -13,7 +12,7 @@ const CostForm = ({categories}) => {
 
   return (
     <form className='mt-10' onSubmit={submitCost}>
-      <h1 className='text-3xl mb-10 font-bold'>Cost Form</h1>
+      <h2 className='text-3xl mb-10 font-bold'>Enter Expense</h2>
       <div>
         <select className="form-select">
           {

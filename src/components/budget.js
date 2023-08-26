@@ -46,8 +46,8 @@ function Totals({categories}) {
 
   return (
     <div className='pt-10'>
-      <h1 className='text-2xl font-semibold'>Total Budget: {formattedAmount}</h1>
-      <h1 className='text-2xl font-semibold'>Spent: </h1>
+      <h2 className='text-2xl font-semibold'>Total Budget: {formattedAmount}</h2>
+      <h2 className='text-2xl font-semibold'>Spent: </h2>
     </div>
   )
 }
