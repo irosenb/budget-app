@@ -22,8 +22,8 @@ const Budget = () => {
   } 
 
   return (
-    <div className='container text-center mx-auto pt-10'>
-      <h1 className='text-3xl font-bold'>Budget App</h1>
+    <div className='container md:text-center w-3/4 mx-auto pt-10'>
+      <h1 className='text-4xl md:text-7xl font-bold'>Budget App</h1>
       <Totals categories={categories}/>
       <CostForm categories={categories}/>
     </div>
