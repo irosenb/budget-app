@@ -65,10 +65,18 @@ function Totals({categories, spent}) {
     currency: 'USD'
   })
 
+  const remaining = sum - spent
+
+  const formattedRemaining = remaining.toLocaleString('en-US', {
+    style: 'currency', 
+    currency: 'USD'
+  })
+
   return (
     <div className='pt-10'>
       <h2 className='text-2xl font-semibold'>Total Budget: {formattedAmount}</h2>
       <h2 className='text-2xl font-semibold'>Spent: {formattedSpent}</h2>
+      <h2 className='text-2xl font-semibold'>Remaining: {formattedRemaining}</h2>
     </div>
   )
 }

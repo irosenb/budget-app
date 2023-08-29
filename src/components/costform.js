@@ -13,7 +13,7 @@ const CostForm = ({categories}) => {
     const form = new FormData(e.target)
     const entries = Object.fromEntries(form.entries())
     // Create expense object
-    const expense = {Cost: parseInt(entries.Cost), Category: entries.Category}
+    const expense = {Cost: parseFloat(entries.Cost), Category: entries.Category}
 
     console.log(expense)
     
